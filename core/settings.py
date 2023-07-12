@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     #3rd
 
     'perfil',
+    'extrato',
 ]
 
 MIDDLEWARE = [
