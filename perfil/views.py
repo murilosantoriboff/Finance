@@ -4,6 +4,8 @@ from django.contrib.messages import constants
 from django.contrib import messages
 from django.http import HttpResponse
 from .utils import calcula_total
+from django.db.models import Sum
+from extrato.models import Valores
 
 def home(request):
     contas = Conta.objects.all()
@@ -63,3 +65,14 @@ def update_categoria(request, id):
     categoria.essencial = not categoria.essencial
     categoria.save()
     return redirect('/perfil/gerenciar/')
+
+def dashboard(request):
+    dados = dict()
+    categorias = Categoria.objects.all()
+    for categoria in categorias:
+        tot = 0
+        valores = Valores.objects.filter(categoria=categoria)
+        for v in valores:
+            tot += v.valor
+        dados[categoria.categoria] = tot
+    return render(request, 'dashboard.html', {'labels': list(dados.keys()), 'values': list(dados.values())})
