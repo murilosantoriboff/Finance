@@ -1,6 +1,6 @@
 <h1>Finance</h1>
 
-> Status: Developing ⚠️
+> Status: Finished
 
 ### Finance it's a website planned by me, where i builted with Python and Django for Back-end and HTLM 5, CSS 3, JavaScript and Chat.JS for Front-End.
 
